@@ -22,7 +22,7 @@ import {
 import { useState } from "react";
 import { DemoComponent } from "./DemoComponent/DemoComponent";
 
-export default function ApplicationShell() {
+export const ApplicationShell = () => {
   const theme = useMantineTheme();
   const [isOpened, setIsOpened] = useState(false);
   const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
@@ -126,4 +126,4 @@ export default function ApplicationShell() {
       <DemoComponent />
     </AppShell>
   );
-}
+};
