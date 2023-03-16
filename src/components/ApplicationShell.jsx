@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AppShell,
   Burger,
@@ -19,13 +20,13 @@ import {
   IconSwitchHorizontal,
   IconUserCircle,
 } from "@tabler/icons-react";
-import { useState } from "react";
-import { DemoComponent } from "./DemoComponent/DemoComponent";
+
+import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
 
 export const ApplicationShell = () => {
   const theme = useMantineTheme();
   const [isOpened, setIsOpened] = useState(false);
-  const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
+  const [, setIsUserMenuOpened] = useState(false);
 
   const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
   const toggleBurger = () => setIsOpened((bool) => !bool);
