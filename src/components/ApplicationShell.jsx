@@ -24,8 +24,8 @@ import { DemoComponent } from "./DemoComponent/DemoComponent";
 
 export default function ApplicationShell() {
   const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
-  const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
+  const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
 
   return (
     <AppShell
@@ -49,8 +49,8 @@ export default function ApplicationShell() {
           >
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
               <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
+                opened={isOpened}
+                onClick={() => setIsOpened((o) => !o)}
                 size="sm"
                 color={theme.colors.gray[6]}
                 mr="xl"
@@ -64,8 +64,8 @@ export default function ApplicationShell() {
               width={260}
               position="bottom-end"
               transitionProps={{ transition: "pop-top-right" }}
-              onClose={() => setUserMenuOpened(false)}
-              onOpen={() => setUserMenuOpened(true)}
+              onClose={() => setIsUserMenuOpened(false)}
+              onOpen={() => setIsUserMenuOpened(true)}
               withinPortal
             >
               <Menu.Target>
@@ -96,7 +96,7 @@ export default function ApplicationShell() {
         <Navbar
           p="md"
           hiddenBreakpoint="sm"
-          hidden={!opened}
+          hidden={!isOpened}
           width={{ sm: 120 }}
         >
           <Navbar.Section grow>
