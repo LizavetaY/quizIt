@@ -1,10 +1,10 @@
-import { DemoComponent } from "./DemoComponent/DemoComponent";
-import { ThemeProvider } from "./ThemeProvider";
+import { ApplicationShell } from "@/components/ApplicationShell";
+import { ThemeProvider } from "@/ThemeProvider";
 
 export default function App() {
   return (
     <ThemeProvider>
-      <DemoComponent />
+      <ApplicationShell />
     </ThemeProvider>
   );
 }
