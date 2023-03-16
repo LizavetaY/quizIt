@@ -27,6 +27,9 @@ export const ApplicationShell = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
 
+  const triggerMenu = () => setIsUserMenuOpened((bool) => !bool);
+  const triggerBurger = () => setIsOpened((bool) => !bool);
+
   return (
     <AppShell
       styles={{
@@ -50,7 +53,7 @@ export const ApplicationShell = () => {
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
               <Burger
                 opened={isOpened}
-                onClick={() => setIsOpened((o) => !o)}
+                onClick={triggerBurger}
                 size="sm"
                 color={theme.colors.gray[6]}
                 mr="xl"
@@ -64,8 +67,8 @@ export const ApplicationShell = () => {
               width={260}
               position="bottom-end"
               transitionProps={{ transition: "pop-top-right" }}
-              onClose={() => setIsUserMenuOpened(false)}
-              onOpen={() => setIsUserMenuOpened(true)}
+              onClose={triggerMenu}
+              onOpen={triggerMenu}
               withinPortal
             >
               <Menu.Target>
