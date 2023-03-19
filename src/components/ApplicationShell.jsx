@@ -12,37 +12,42 @@ import {
   UnstyledButton,
   useMantineTheme,
 } from "@mantine/core";
+//import { useClickOutside } from "@mantine/hooks";
 import {
   IconLogout,
-  IconMoon,
   IconSettings,
-  IconSunFilled,
   IconSwitchHorizontal,
   IconUserCircle,
 } from "@tabler/icons-react";
 
+import { ColorSchemeToggle } from "@/components/ColorScheme";
 import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
 
 export const ApplicationShell = () => {
+  const { colors } = useMantineTheme();
   const theme = useMantineTheme();
+
   const [isOpened, setIsOpened] = useState(false);
   const [, setIsUserMenuOpened] = useState(false);
 
   const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
+
   const toggleBurger = () => setIsOpened((bool) => !bool);
+  //useClickOutside(() => setIsUserMenuOpened(false), ["mouseup", "touchend"]);
 
   return (
     <AppShell
-      styles={{
-        main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-        },
+      //bg={colors.bg0}
+      sx={{
+        backgroundImage: theme.fn.gradient(),
       }}
       header={
-        <Header height={{ base: 50, md: 70 }} p="md">
+        <Header
+          height={{ base: 50, md: 70 }}
+          p="xl"
+          bg={colors.bgHeader}
+          sx={{ border: "none" }}
+        >
           <div
             style={{
               display: "flex",
@@ -55,13 +60,14 @@ export const ApplicationShell = () => {
               <Burger
                 opened={isOpened}
                 onClick={toggleBurger}
-                size="sm"
-                color={theme.colors.gray[6]}
+                size="18px"
+                color={colors.textLogo}
                 mr="xl"
+                sx={{ fontWeight: "600" }}
               />
             </MediaQuery>
 
-            <Text fz="xl" fw={700}>
+            <Text fz="xl" fw={700} color={colors.textLogo}>
               QuizIt
             </Text>
             <Menu
@@ -74,20 +80,32 @@ export const ApplicationShell = () => {
             >
               <Menu.Target>
                 <UnstyledButton>
-                  <IconUserCircle />
+                  <IconUserCircle color={colors.textLogo} />
                 </UnstyledButton>
               </Menu.Target>
-              <Menu.Dropdown>
+              <Menu.Dropdown bg={colors.bg1}>
                 <Menu.Label>Settings</Menu.Label>
-                <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
+                <Menu.Item
+                  sx={{
+                    color: colors.text1,
+                    "&:hover": {
+                      backgroundColor: colors.bg0,
+                    },
+                  }}
+                  icon={<IconSettings size="0.9rem" stroke={1.5} />}
+                >
                   Account settings
                 </Menu.Item>
                 <Menu.Item
+                  sx={{ color: colors.text1 }}
                   icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}
                 >
                   Change account
                 </Menu.Item>
-                <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>
+                <Menu.Item
+                  sx={{ color: colors.text1 }}
+                  icon={<IconLogout size="0.9rem" stroke={1.5} />}
+                >
                   Logout
                 </Menu.Item>
               </Menu.Dropdown>
@@ -101,27 +119,35 @@ export const ApplicationShell = () => {
           p="md"
           hiddenBreakpoint="sm"
           hidden={!isOpened}
-          width={{ sm: 120 }}
+          width={{ sm: 100 }}
+          bg={colors.bg1}
+          sx={{ borderColor: colors.bg0 }}
         >
           <Navbar.Section grow>
             <Stack align="center">
-              <UnstyledButton>Home</UnstyledButton>
+              <UnstyledButton>
+                <Text color={colors.text1}>Home</Text>
+              </UnstyledButton>
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack align="center">
-              <UnstyledButton>Settings</UnstyledButton>
               <UnstyledButton>
-                <IconSunFilled />
-                <IconMoon />
+                <Text color={colors.text2}>Settings</Text>
               </UnstyledButton>
+              <ColorSchemeToggle />
             </Stack>
           </Navbar.Section>
         </Navbar>
       }
       footer={
-        <Footer height={60} p="md">
-          <Text fz="sm" ta="center">
+        <Footer
+          height={60}
+          p="md"
+          bg={colors.bg1}
+          sx={{ borderColor: colors.bg0 }}
+        >
+          <Text fz="sm" ta="center" color={colors.text1}>
             Build with love by Liza, Kate and Mick 🙂 2023
           </Text>
         </Footer>
