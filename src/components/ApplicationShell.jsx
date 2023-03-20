@@ -19,7 +19,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 
-import { ColorSchemeToggle } from "@/components/ColorScheme";
+import { ColorSchemeToggle } from "@/components/ColorSchemeToggle";
 import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
 
 export const ApplicationShell = () => {

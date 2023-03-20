@@ -7,7 +7,7 @@ import { IconMoonStars, IconSun } from "@tabler/icons-react";
 
 export const ColorSchemeToggle = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
+  const isDark = colorScheme === "dark";
   const { colors } = useMantineTheme();
 
   return (
@@ -17,7 +17,7 @@ export const ColorSchemeToggle = () => {
       title="Toggle color scheme"
       sx={{ borderColor: colors.bgHeader }}
     >
-      {dark ? (
+      {isDark ? (
         <IconSun size="1.2rem" color={colors.bgHeader} />
       ) : (
         <IconMoonStars size="1.1rem" color={colors.bgHeader} />
