@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import {
+  Anchor,
   AppShell,
   Burger,
   Footer,
@@ -20,7 +22,6 @@ import {
 } from "@tabler/icons-react";
 
 import { ColorSchemeToggle } from "@/components/ColorSchemeToggle";
-import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
 
 export const ApplicationShell = () => {
   const { colors } = useMantineTheme();
@@ -64,7 +65,14 @@ export const ApplicationShell = () => {
               />
             </MediaQuery>
 
-            <Text fz="xl" fw={700} color={colors.textLogo}>
+            <Text
+              component={Link}
+              variant="link"
+              to="/"
+              fz="xl"
+              fw={700}
+              color={colors.textLogo}
+            >
               QuizIt
             </Text>
             <Menu
@@ -109,17 +117,35 @@ export const ApplicationShell = () => {
           sx={{ borderColor: colors.bg0 }}
         >
           <Navbar.Section grow>
-            <Stack align="center">
-              <UnstyledButton>
-                <Text color={colors.text1}>Home</Text>
-              </UnstyledButton>
+            <Stack>
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/"
+                color={colors.text1}
+              >
+                Home
+              </Anchor>
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/login"
+                color={colors.text1}
+              >
+                Login
+              </Anchor>
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack align="center">
-              <UnstyledButton>
-                <Text color={colors.text2}>Settings</Text>
-              </UnstyledButton>
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/settings"
+                color={colors.text1}
+              >
+                Settings
+              </Anchor>
               <ColorSchemeToggle />
             </Stack>
           </Navbar.Section>
@@ -138,7 +164,7 @@ export const ApplicationShell = () => {
         </Footer>
       }
     >
-      <DemoComponent />
+      <Outlet />
     </AppShell>
   );
 };
