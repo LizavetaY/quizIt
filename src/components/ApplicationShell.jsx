@@ -16,33 +16,36 @@ import {
 } from "@mantine/core";
 import {
   IconLogout,
-  IconMoon,
   IconSettings,
-  IconSunFilled,
   IconSwitchHorizontal,
   IconUserCircle,
 } from "@tabler/icons-react";
 
+import { ColorSchemeToggle } from "@/components/ColorSchemeToggle";
+
 export const ApplicationShell = () => {
+  const { colors } = useMantineTheme();
   const theme = useMantineTheme();
+
   const [isOpened, setIsOpened] = useState(false);
   const [, setIsUserMenuOpened] = useState(false);
 
   const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
+
   const toggleBurger = () => setIsOpened((bool) => !bool);
 
   return (
     <AppShell
-      styles={{
-        main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-        },
+      sx={{
+        backgroundImage: theme.fn.gradient(),
       }}
       header={
-        <Header height={{ base: 50, md: 70 }} p="md">
+        <Header
+          height={{ base: 50, md: 70 }}
+          p="xl"
+          bg={colors.bgHeader}
+          sx={{ border: "none" }}
+        >
           <div
             style={{
               display: "flex",
@@ -56,11 +59,19 @@ export const ApplicationShell = () => {
                 opened={isOpened}
                 onClick={toggleBurger}
                 size="sm"
-                color={theme.colors.gray[6]}
+                color={colors.textLogo}
                 mr="xl"
+                sx={{ fontWeight: "600" }}
               />
             </MediaQuery>
-            <Text component={Link} variant="link" to="/">
+            <Text
+              component={Link}
+              variant="link"
+              to="/"
+              fz="xl"
+              fw={700}
+              color={colors.textLogo}
+            >
               QuizIt
             </Text>
             <Menu
@@ -73,10 +84,10 @@ export const ApplicationShell = () => {
             >
               <Menu.Target>
                 <UnstyledButton>
-                  <IconUserCircle />
+                  <IconUserCircle color={colors.textLogo} />
                 </UnstyledButton>
               </Menu.Target>
-              <Menu.Dropdown>
+              <Menu.Dropdown bg={colors.bg1}>
                 <Menu.Label>Settings</Menu.Label>
                 <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
                   Account settings
@@ -100,34 +111,53 @@ export const ApplicationShell = () => {
           p="md"
           hiddenBreakpoint="sm"
           hidden={!isOpened}
-          width={{ sm: 120 }}
+          width={{ sm: 100 }}
+          bg={colors.bg1}
+          sx={{ borderColor: colors.bg0 }}
         >
           <Navbar.Section grow>
             <Stack>
-              <Anchor component={Link} variant="link" to="/">
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/"
+                color={colors.text1}
+              >
                 Home
               </Anchor>
-              <Anchor component={Link} variant="link" to="/login">
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/login"
+                color={colors.text1}
+              >
                 Login
               </Anchor>
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack align="center">
-              <Anchor component={Link} variant="link" to="/settings">
+              <Anchor
+                component={Link}
+                variant="link"
+                to="/settings"
+                color={colors.text1}
+              >
                 Settings
               </Anchor>
-              <UnstyledButton>
-                <IconSunFilled />
-                <IconMoon />
-              </UnstyledButton>
+              <ColorSchemeToggle />
             </Stack>
           </Navbar.Section>
         </Navbar>
       }
       footer={
-        <Footer height={60} p="md">
-          <Text fz="sm" ta="center">
+        <Footer
+          height={60}
+          p="md"
+          bg={colors.bg1}
+          sx={{ borderColor: colors.bg0 }}
+        >
+          <Text fz="sm" ta="center" color={colors.text1}>
             Build with love by Liza, Kate and Mick 🙂 2023
           </Text>
         </Footer>
