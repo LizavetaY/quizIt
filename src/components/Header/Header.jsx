@@ -40,7 +40,6 @@ export const Header = ({ toggleMenu, toggleBurger, isOpened }) => {
             onClick={toggleBurger}
             size="sm"
             color={colors.textLogo}
-            mr="xl"
             sx={{ fontWeight: "600" }}
           />
         </MediaQuery>

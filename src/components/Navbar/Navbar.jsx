@@ -22,7 +22,7 @@ export const Navbar = ({ isOpened }) => {
       sx={{ borderColor: colors.bg0 }}
     >
       <MantineNavbar.Section grow>
-        <Stack>
+        <Stack align="center">
           <Anchor component={Link} variant="link" to="/" color={colors.text1}>
             Home
           </Anchor>
