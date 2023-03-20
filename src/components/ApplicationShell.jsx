@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
   Anchor,
   AppShell,
@@ -133,7 +133,7 @@ export const ApplicationShell = ({ children }) => {
         </Footer>
       }
     >
-      {children}
+      <Outlet />
     </AppShell>
   );
 };

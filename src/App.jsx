@@ -8,13 +8,13 @@ import { SettingsPage } from "@/pages/SettingsPage";
 export default function App() {
   return (
     <BrowserRouter>
-      <ApplicationShell>
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <Routes>
+        <Route path="/" element={<ApplicationShell />}>
+          <Route index element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/settings" element={<SettingsPage />} />
-        </Routes>
-      </ApplicationShell>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
