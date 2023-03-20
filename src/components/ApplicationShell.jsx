@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { AppShell, Footer, Text, useMantineTheme } from "@mantine/core";
+import { AppShell, useMantineTheme } from "@mantine/core";
 
-import { Header, Navbar } from "@/components";
+import { Footer, Header, Navbar } from "@/components";
 
 export const ApplicationShell = () => {
   const { fn, colors } = useMantineTheme();
@@ -26,19 +26,7 @@ export const ApplicationShell = () => {
         />
       }
       navbarOffsetBreakpoint="sm"
-      navbar={<Navbar isOpened={isOpened} />}
-      footer={
-        <Footer
-          height={60}
-          p="md"
-          bg={colors.bg1}
-          sx={{ borderColor: colors.bg0 }}
-        >
-          <Text fz="sm" ta="center" color={colors.text1}>
-            Build with love by Liza, Kate and Mick 🙂 2023
-          </Text>
-        </Footer>
-      }
+      footer={<Footer />}
     >
       <Outlet />
     </AppShell>
