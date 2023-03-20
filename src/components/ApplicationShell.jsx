@@ -5,12 +5,10 @@ import { AppShell, useMantineTheme } from "@mantine/core";
 import { Footer, Header, Navbar } from "@/components";
 
 export const ApplicationShell = () => {
-  const { fn, colors } = useMantineTheme();
-
   const [isOpened, setIsOpened] = useState(false);
-  const [, setIsUserMenuOpened] = useState(false);
 
-  const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
+  const { fn } = useMantineTheme();
+
   const toggleBurger = () => setIsOpened((bool) => !bool);
 
   return (
@@ -18,13 +16,8 @@ export const ApplicationShell = () => {
       sx={{
         backgroundImage: fn.gradient(),
       }}
-      header={
-        <Header
-          toggleMenu={toggleMenu}
-          toggleBurger={toggleBurger}
-          isOpened={isOpened}
-        />
-      }
+      header={<Header toggleBurger={toggleBurger} isOpened={isOpened} />}
+      navbar={<Navbar isOpened={isOpened} />}
       navbarOffsetBreakpoint="sm"
       footer={<Footer />}
     >

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Burger,
@@ -16,8 +17,12 @@ import {
 } from "@tabler/icons-react";
 import PropTypes from "prop-types";
 
-export const Header = ({ toggleMenu, toggleBurger, isOpened }) => {
+export const Header = ({ toggleBurger, isOpened }) => {
+  const [, setIsUserMenuOpened] = useState(false);
+
   const { colors } = useMantineTheme();
+
+  const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
 
   return (
     <MantineHeader
@@ -87,7 +92,6 @@ export const Header = ({ toggleMenu, toggleBurger, isOpened }) => {
 };
 
 Header.propTypes = {
-  toggleMenu: PropTypes.func,
   toggleBurger: PropTypes.func,
   isOpened: PropTypes.bool,
 };
