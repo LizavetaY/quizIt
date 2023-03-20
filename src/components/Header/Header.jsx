@@ -87,7 +87,7 @@ export const Header = ({ toggleMenu, toggleBurger, isOpened }) => {
   );
 };
 
-MantineHeader.propTypes = {
+Header.propTypes = {
   toggleMenu: PropTypes.func,
   toggleBurger: PropTypes.func,
   isOpened: PropTypes.bool,
