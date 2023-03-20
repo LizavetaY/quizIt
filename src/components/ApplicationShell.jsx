@@ -12,7 +12,6 @@ import {
   UnstyledButton,
   useMantineTheme,
 } from "@mantine/core";
-//import { useClickOutside } from "@mantine/hooks";
 import {
   IconLogout,
   IconSettings,
@@ -33,11 +32,9 @@ export const ApplicationShell = () => {
   const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
 
   const toggleBurger = () => setIsOpened((bool) => !bool);
-  //useClickOutside(() => setIsUserMenuOpened(false), ["mouseup", "touchend"]);
 
   return (
     <AppShell
-      //bg={colors.bg0}
       sx={{
         backgroundImage: theme.fn.gradient(),
       }}
@@ -60,7 +57,7 @@ export const ApplicationShell = () => {
               <Burger
                 opened={isOpened}
                 onClick={toggleBurger}
-                size="18px"
+                size="sm"
                 color={colors.textLogo}
                 mr="xl"
                 sx={{ fontWeight: "600" }}
@@ -85,27 +82,15 @@ export const ApplicationShell = () => {
               </Menu.Target>
               <Menu.Dropdown bg={colors.bg1}>
                 <Menu.Label>Settings</Menu.Label>
-                <Menu.Item
-                  sx={{
-                    color: colors.text1,
-                    "&:hover": {
-                      backgroundColor: colors.bg0,
-                    },
-                  }}
-                  icon={<IconSettings size="0.9rem" stroke={1.5} />}
-                >
+                <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
                   Account settings
                 </Menu.Item>
                 <Menu.Item
-                  sx={{ color: colors.text1 }}
                   icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}
                 >
                   Change account
                 </Menu.Item>
-                <Menu.Item
-                  sx={{ color: colors.text1 }}
-                  icon={<IconLogout size="0.9rem" stroke={1.5} />}
-                >
+                <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>
                   Logout
                 </Menu.Item>
               </Menu.Dropdown>
