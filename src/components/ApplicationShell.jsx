@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import {
+  Anchor,
   AppShell,
   Burger,
   Footer,
@@ -20,8 +22,6 @@ import {
   IconSwitchHorizontal,
   IconUserCircle,
 } from "@tabler/icons-react";
-
-import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
 
 export const ApplicationShell = () => {
   const theme = useMantineTheme();
@@ -60,8 +60,7 @@ export const ApplicationShell = () => {
                 mr="xl"
               />
             </MediaQuery>
-
-            <Text fz="xl" fw={700}>
+            <Text component={Link} variant="link" to="/">
               QuizIt
             </Text>
             <Menu
@@ -104,13 +103,20 @@ export const ApplicationShell = () => {
           width={{ sm: 120 }}
         >
           <Navbar.Section grow>
-            <Stack align="center">
-              <UnstyledButton>Home</UnstyledButton>
+            <Stack>
+              <Anchor component={Link} variant="link" to="/">
+                Home
+              </Anchor>
+              <Anchor component={Link} variant="link" to="/login">
+                Login
+              </Anchor>
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack align="center">
-              <UnstyledButton>Settings</UnstyledButton>
+              <Anchor component={Link} variant="link" to="/settings">
+                Settings
+              </Anchor>
               <UnstyledButton>
                 <IconSunFilled />
                 <IconMoon />
@@ -127,7 +133,7 @@ export const ApplicationShell = () => {
         </Footer>
       }
     >
-      <DemoComponent />
+      <Outlet />
     </AppShell>
   );
 };
