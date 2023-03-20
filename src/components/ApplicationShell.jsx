@@ -60,11 +60,9 @@ export const ApplicationShell = ({ children }) => {
                 mr="xl"
               />
             </MediaQuery>
-            <Anchor component={Link} variant="link" to="/">
-              <Text fz="xl" fw={700}>
-                QuizIt
-              </Text>
-            </Anchor>
+            <Text component={Link} variant="link" to="/">
+              QuizIt
+            </Text>
             <Menu
               width={260}
               position="bottom-end"
