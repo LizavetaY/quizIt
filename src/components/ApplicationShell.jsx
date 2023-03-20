@@ -64,7 +64,6 @@ export const ApplicationShell = () => {
                 sx={{ fontWeight: "600" }}
               />
             </MediaQuery>
-
             <Text
               component={Link}
               variant="link"
