@@ -23,7 +23,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 
-export const ApplicationShell = ({ children }) => {
+export const ApplicationShell = () => {
   const theme = useMantineTheme();
   const [isOpened, setIsOpened] = useState(false);
   const [, setIsUserMenuOpened] = useState(false);
