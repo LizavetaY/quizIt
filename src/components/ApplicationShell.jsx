@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
+  Anchor,
   AppShell,
   Burger,
   Footer,
@@ -21,9 +23,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 
-import { DemoComponent } from "@/components/DemoComponent/DemoComponent";
-
-export const ApplicationShell = () => {
+export const ApplicationShell = ({ children }) => {
   const theme = useMantineTheme();
   const [isOpened, setIsOpened] = useState(false);
   const [, setIsUserMenuOpened] = useState(false);
@@ -60,10 +60,11 @@ export const ApplicationShell = () => {
                 mr="xl"
               />
             </MediaQuery>
-
-            <Text fz="xl" fw={700}>
-              QuizIt
-            </Text>
+            <Anchor component={Link} variant="link" to="/">
+              <Text fz="xl" fw={700}>
+                QuizIt
+              </Text>
+            </Anchor>
             <Menu
               width={260}
               position="bottom-end"
@@ -104,13 +105,20 @@ export const ApplicationShell = () => {
           width={{ sm: 120 }}
         >
           <Navbar.Section grow>
-            <Stack align="center">
-              <UnstyledButton>Home</UnstyledButton>
+            <Stack>
+              <Anchor component={Link} variant="link" to="/">
+                Home
+              </Anchor>
+              <Anchor component={Link} variant="link" to="/login">
+                Login
+              </Anchor>
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack align="center">
-              <UnstyledButton>Settings</UnstyledButton>
+              <Anchor component={Link} variant="link" to="/settings">
+                Settings
+              </Anchor>
               <UnstyledButton>
                 <IconSunFilled />
                 <IconMoon />
@@ -127,7 +135,7 @@ export const ApplicationShell = () => {
         </Footer>
       }
     >
-      <DemoComponent />
+      {children}
     </AppShell>
   );
 };
