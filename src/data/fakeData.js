@@ -1,6 +1,6 @@
-const reactRules = [
+export const reactRules = [
   {
-    id: 1,
+    id: "1",
     question: "What is a Hook?",
     answers: [
       {
@@ -18,7 +18,7 @@ const reactRules = [
     explanation: "Explanation will be here",
   },
   {
-    id: 2,
+    id: "2",
     question: "When Hooks were launched in React?",
     answers: [
       { id: "ans-2-1", data: "In React 16.7.0" },
@@ -30,7 +30,7 @@ const reactRules = [
     explanation: "Explanation will be here",
   },
   {
-    id: 3,
+    id: "3",
     question: "What plugin enforces two rules of Hooks?",
     answers: [
       { id: "ans-3-1", data: "TSLint" },
@@ -43,9 +43,9 @@ const reactRules = [
   },
 ];
 
-const html = [
+export const html = [
   {
-    id: 1,
+    id: "1",
     question: "Which tag is used inside the <map> tag",
     answers: [
       { id: "ans-1-1", data: "<a>" },
@@ -57,7 +57,7 @@ const html = [
     explanation: "Explanation will be here",
   },
   {
-    id: 2,
+    id: "2",
     question:
       "What value of the input element's type attribute does not exist?",
     answers: [
@@ -70,7 +70,7 @@ const html = [
     explanation: "Explanation will be here",
   },
   {
-    id: 3,
+    id: "3",
     question: "Which of the tags does NOT have the autocomplete attribute?",
     answers: [
       { id: "ans-3-1", data: "Applies to all" },
@@ -82,7 +82,7 @@ const html = [
     explanation: "Explanation will be here",
   },
   {
-    id: 4,
+    id: "4",
     question: "What value of type attribute does not exist for inputs?",
     answers: [
       { id: "ans-4-1", data: "Number" },
@@ -94,7 +94,7 @@ const html = [
     explanation: "Explanation will be here",
   },
   {
-    id: 5,
+    id: "5",
     question:
       "What value should be given to the input tag's type attribute to create a radio button?",
     answers: [
@@ -108,9 +108,9 @@ const html = [
   },
 ];
 
-const css = [
+export const css = [
   {
-    id: 1,
+    id: "1",
     question: "What types of positioning do you know?",
     answers: [
       { id: "ans-2-1", data: "Static, sticky, absolute, relationship, fixed" },
@@ -122,7 +122,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 2,
+    id: "2",
     question: "What does CSS stand for?",
     answers: [
       { id: "ans-2-1", data: "Computer Style Sheets" },
@@ -134,7 +134,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 3,
+    id: "3",
     question: "What rule allows you to include external fonts?",
     answers: [
       { id: "ans-3-1", data: "@font-rule" },
@@ -146,7 +146,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 4,
+    id: "4",
     question: "What is the rgba() function responsible for?",
     answers: [
       { id: "ans-4-1", data: "Color + transparency" },
@@ -158,7 +158,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 5,
+    id: "5",
     question: "What defines selector weight (specificity) in CSS?",
     answers: [
       { id: "ans-5-1", data: "Number of selectors in code" },
@@ -170,7 +170,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 6,
+    id: "6",
     question: "Which HTML attribute is used to define inline styles?",
     answers: [
       { id: "ans-6-1", data: "Font" },
@@ -182,7 +182,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 7,
+    id: "7",
     question: "Which is the correct CSS syntax?",
     answers: [
       { id: "ans-7-1", data: "body {color: black;}" },
@@ -194,7 +194,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 8,
+    id: "8",
     question:
       "What is the correct CSS syntax for making all the <p> elements bold?",
     answers: [
@@ -207,7 +207,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 9,
+    id: "9",
     question:
       "How do you make each word in a text start with a capital letter?",
     answers: [
@@ -220,7 +220,7 @@ const css = [
     explanation: "Explanation will be here",
   },
   {
-    id: 10,
+    id: "10",
     question: "How do you select an element with id 'demo'?",
     answers: [
       { id: "ans-10-1", data: "#demo" },
@@ -233,9 +233,9 @@ const css = [
   },
 ];
 
-const js = [
+export const js = [
   {
-    id: 1,
+    id: "1",
     question: "What type of data is not in JS?",
     answers: [
       { id: "ans-1-1", data: "Symbol" },
@@ -245,7 +245,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 2,
+    id: "2",
     question: "What is used to iterate over objects?",
     answers: [
       { id: "ans-2-1", data: "Object.keys" },
@@ -255,7 +255,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 3,
+    id: "3",
     question: "What will be the result: var foo = 10 + '20' ?",
     answers: [
       { id: "ans-3-1", data: "30" },
@@ -265,7 +265,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 4,
+    id: "4",
     question: "'Use strict' mode helps in writing cleaner and safer code?",
     answers: [
       { id: "ans-4-1", data: "True" },
@@ -275,7 +275,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 5,
+    id: "5",
     question: "What will be the result: let a = (1,5 - 1) * 2 ?",
     answers: [
       { id: "ans-5-1", data: "1" },
@@ -285,7 +285,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 6,
+    id: "6",
     question: "null === undefined?",
     answers: [
       { id: "ans-6-1", data: "True" },
@@ -295,7 +295,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 7,
+    id: "7",
     question: "What will be the result: let value = true; alert(typeof value)?",
     answers: [
       { id: "ans-7-1", data: "boolean" },
@@ -305,7 +305,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 8,
+    id: "8",
     question: "Boolean any of these values 0, null, undefined, NaN, '' will?",
     answers: [
       { id: "ans-8-1", data: "True" },
@@ -315,7 +315,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 9,
+    id: "9",
     question: "What will be the result console.log( +true ) ?",
     answers: [
       { id: "ans-9-1", data: "1" },
@@ -325,7 +325,7 @@ const js = [
     explanation: "Explanation will be here",
   },
   {
-    id: 10,
+    id: "10",
     question: "What will be the result: let counter = 0; alert( counter++ ); ?",
     answers: [
       { id: "ans-10-1", data: "1" },
