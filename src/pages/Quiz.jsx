@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Text } from "@mantine/core";
 
-import { QuizQuestion } from "@/components/QuizQuestion";
+import { QuizQuestion } from "@/components";
 import { reactRules } from "@/data/fakeData";
 
 export const Quiz = () => {
