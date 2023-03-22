@@ -1,4 +1,4 @@
-# DoTODOs
+# QuizIt
 
 ## Table of contents
 
