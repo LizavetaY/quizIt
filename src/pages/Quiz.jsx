@@ -2,7 +2,8 @@ import React from "react";
 import { Container, Text } from "@mantine/core";
 
 import { QuizQuestion } from "@/components";
-import { reactRules } from "@/data/fakeData";
+
+import { reactRules } from "../../server/fakeData";
 
 export const Quiz = () => {
   const [questionPage, setQuestionPage] = React.useState(0);
