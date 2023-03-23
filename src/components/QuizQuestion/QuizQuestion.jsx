@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Flex, Text, useMantineTheme } from "@mantine/core";
 import PropTypes from "prop-types";
 
-import { ProgressBar } from "../ProgressBar";
+import { ProgressBar } from "@/components";
 
 export const QuizQuestion = ({
   question,
