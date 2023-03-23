@@ -1,8 +1,20 @@
+import { useEffect, useState } from "react";
 import { SimpleGrid } from "@mantine/core";
 
 import { QuizCard } from "@/components";
 
 export const Home = () => {
+  const [data, setData] = useState([]);
+  async function getData() {
+    const response = await fetch("http://localhost:8080/data");
+    const data = await response.json();
+    setData(data);
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <SimpleGrid
       cols={3}
@@ -11,9 +23,11 @@ export const Home = () => {
         { maxWidth: "sm", cols: 1, spacing: "sm" },
       ]}
     >
-      <QuizCard />
-      <QuizCard />
-      <QuizCard />
+      {data.map((quiz) => {
+        return (
+          <QuizCard key={quiz.quizId} name={quiz.quizName} path={quiz.quizId} />
+        );
+      })}
     </SimpleGrid>
   );
 };

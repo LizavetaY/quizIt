@@ -12,8 +12,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<ApplicationShell />}>
           <Route index element={<Home />} />
-          {/* Change to /:id at Quiz Route */}
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/:id" element={<Quiz />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
