@@ -15,7 +15,6 @@ export const ColorSchemeToggle = () => {
       variant="outline"
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
-      sx={{ borderColor: colors.bgHeader }}
     >
       {isDark ? (
         <IconSun size="1.2rem" color={colors.bgHeader} />
