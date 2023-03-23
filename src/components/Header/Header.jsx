@@ -25,12 +25,7 @@ export const Header = ({ toggleBurger, isOpened }) => {
   const toggleMenu = () => setIsUserMenuOpened((bool) => !bool);
 
   return (
-    <MantineHeader
-      height={{ base: 50, md: 70 }}
-      p="xl"
-      bg={colors.bgHeader}
-      sx={{ border: "none" }}
-    >
+    <MantineHeader height={{ base: 50, md: 70 }} p="xl" sx={{ border: "none" }}>
       <div
         style={{
           display: "flex",
@@ -40,22 +35,9 @@ export const Header = ({ toggleBurger, isOpened }) => {
         }}
       >
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-          <Burger
-            opened={isOpened}
-            onClick={toggleBurger}
-            size="sm"
-            color={colors.textLogo}
-            sx={{ fontWeight: "600" }}
-          />
+          <Burger opened={isOpened} onClick={toggleBurger} />
         </MediaQuery>
-        <Text
-          component={Link}
-          variant="link"
-          to="/"
-          fz="xl"
-          fw={700}
-          color={colors.textLogo}
-        >
+        <Text component={Link} variant="link" to="/">
           QuizIt
         </Text>
         <Menu
@@ -71,7 +53,7 @@ export const Header = ({ toggleBurger, isOpened }) => {
               <IconUserCircle color={colors.textLogo} />
             </UnstyledButton>
           </Menu.Target>
-          <Menu.Dropdown bg={colors.bg1}>
+          <Menu.Dropdown>
             <Menu.Label>Settings</Menu.Label>
             <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
               Account settings

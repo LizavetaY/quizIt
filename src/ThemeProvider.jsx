@@ -1,16 +1,24 @@
-import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
+import { ColorSchemeProvider, keyframes, MantineProvider } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 
 export const ThemeProvider = ({ children }) => {
   const [colorScheme, setColorScheme] = useLocalStorage({
     key: "mantine-color-scheme",
-    // defaultValue: "dark",
+    defaultValue: "dark",
   });
 
   const toggleColorScheme = () =>
     setColorScheme((current) => (current === "dark" ? "light" : "dark"));
 
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
+
+  const bounce = keyframes`
+    30% { transform: scale(1.2); }
+    40%, 60% { transform: rotate(-20deg) scale(1.2); }
+    50% { transform: rotate(20deg) scale(1.2); }
+    70% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: scale(1); }
+`;
 
   const isDark = colorScheme === "dark";
 
@@ -21,7 +29,7 @@ export const ThemeProvider = ({ children }) => {
     darkYellow = "#fcc826",
     lightYellow = "#f6d964",
     darkText = "#4F4284",
-    lightGrey = "#a79fb8",
+    lightGrey = "#817c8f",
     violet2 = "#D0BFFF",
     violet7 = "#7048E8",
     orange4 = "#FFA94D",
@@ -31,7 +39,9 @@ export const ThemeProvider = ({ children }) => {
     red6 = "#FA5252",
     red9 = "#C92A2A",
     yellow6 = "#FAB005",
-    yellow8 = "#F08C00";
+    yellow8 = "#F08C00",
+    darkBlue = "#00589b",
+    lightBlue = "#2bcbff";
 
   const bg0 = isDark ? darkViolet : white; //dark bg
   const bg1 = isDark ? middleViolet : lightViolet; //middle bg
@@ -72,7 +82,144 @@ export const ThemeProvider = ({ children }) => {
             text2,
             text3,
           },
-          defaultGradient: { from: bg0, to: bg1, deg: 180 },
+          components: {
+            Menu: {
+              styles: {
+                dropdown: {
+                  backgroundColor: bg1,
+                },
+                label: {
+                  color: text2,
+                },
+                item: {
+                  color: text0,
+                },
+              },
+            },
+
+            Header: {
+              defaultProps: (theme) => ({
+                bg: theme.colorScheme === "dark" ? darkYellow : middleViolet,
+              }),
+            },
+            Footer: {
+              defaultProps: (theme) => ({
+                bg: theme.colorScheme === "dark" ? middleViolet : lightViolet,
+                height: "60px",
+                p: "md",
+              }),
+              root: (theme) => ({
+                borderColor:
+                  theme.colorScheme === "dark" ? darkYellow : middleViolet,
+              }),
+            },
+            Navbar: {
+              defaultProps: (theme) => ({
+                bg: theme.colorScheme === "dark" ? middleViolet : lightViolet,
+              }),
+            },
+            Burger: {
+              defaultProps: (theme) => ({
+                color: theme.colorScheme === "dark" ? middleViolet : darkYellow,
+                size: "sm",
+                fontWeight: "600",
+              }),
+            },
+            Text: {
+              defaultProps: (theme) => ({
+                color: theme.colorScheme === "dark" ? white : middleViolet,
+              }),
+              variants: {
+                link: (theme) => ({
+                  root: {
+                    color:
+                      theme.colorScheme === "dark" ? middleViolet : darkYellow,
+                    fontSize: "1.2rem",
+                    fontWeight: "700",
+                    ...theme.fn.hover({
+                      animation: `${bounce} 1s ease infinite`,
+                    }),
+                  },
+                }),
+              },
+            },
+            Anchor: {
+              defaultProps: (theme) => ({
+                color: theme.colorScheme === "dark" ? white : middleViolet,
+              }),
+              variants: {
+                link: (theme) => ({
+                  root: {
+                    color: theme.colorScheme === "dark" ? white : middleViolet,
+                    fontWeight: "600",
+                    ...theme.fn.hover({
+                      opacity: "0.6",
+                      transition: "all 0.2s ease",
+                      textDecoration: "none",
+                    }),
+                  },
+                }),
+              },
+            },
+            ActionIcon: {
+              variants: {
+                outline: (theme) => ({
+                  root: {
+                    borderColor:
+                      theme.colorScheme === "dark" ? darkYellow : middleViolet,
+                  },
+                }),
+              },
+            },
+            Button: {
+              variants: {
+                darkLight: (theme) => ({
+                  root: {
+                    backgroundColor:
+                      theme.colorScheme === "dark" ? orange7 : lightBlue,
+                    color: white,
+                    ...theme.fn.hover({
+                      backgroundColor:
+                        theme.colorScheme === "dark" ? orange4 : darkBlue,
+                    }),
+                  },
+                }),
+                primary: (theme) => ({
+                  root: {
+                    backgroundColor: orange7,
+                    color: white,
+                    ...theme.fn.hover({ backgroundColor: orange4 }),
+                  },
+                }),
+                danger: (theme) => ({
+                  root: {
+                    backgroundColor: red9,
+                    color: white,
+                    ...theme.fn.hover({ backgroundColor: red6 }),
+                  },
+                }),
+                warning: (theme) => ({
+                  root: {
+                    backgroundColor: darkBlue,
+                    color: white,
+                    ...theme.fn.hover({ backgroundColor: lightBlue }),
+                  },
+                }),
+                success: (theme) => ({
+                  root: {
+                    backgroundColor: green9,
+                    color: white,
+                    ...theme.fn.hover({ backgroundColor: green6 }),
+                  },
+                }),
+              },
+            },
+          },
+          defaultGradient: {
+            from: colorScheme === "dark" ? darkViolet : white,
+            to: colorScheme === "dark" ? middleViolet : lightViolet,
+            deg: 180,
+          },
         }}
         withGlobalStyles
         withNormalizeCSS
