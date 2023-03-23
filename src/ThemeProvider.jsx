@@ -40,6 +40,7 @@ export const ThemeProvider = ({ children }) => {
   const btnBg2 = isDark ? green9 : green6; //button success bg
   const btnBg3 = isDark ? red9 : red6; //button danger bg
   const btnBorder0 = isDark ? yellow8 : yellow6; //button chosen answer border
+  const btnBgHover0 = isDark ? yellow8 : yellow6; //button hover
   const bgHeader = isDark ? darkYellow : middleViolet;
   const textLogo = isDark ? middleViolet : darkYellow;
   const text0 = isDark ? white : darkText; // dark text
@@ -63,6 +64,7 @@ export const ThemeProvider = ({ children }) => {
             btnBg2,
             btnBg3,
             btnBorder0,
+            btnBgHover0,
             bgHeader,
             textLogo,
             text0,
