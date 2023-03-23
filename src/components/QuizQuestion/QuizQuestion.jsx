@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Flex, Text, useMantineTheme } from "@mantine/core";
 import PropTypes from "prop-types";
 
+import { ProgressBar } from "@/components";
+
 export const QuizQuestion = ({
   question,
   answers,
@@ -133,7 +135,7 @@ export const QuizQuestion = ({
       </Flex>
 
       <Flex direction="column" align="center" mt="50px">
-        {(!chosenBtnId && <Text>LOADER WILL BE HERE</Text>) || (
+        {(!chosenBtnId && <ProgressBar />) || (
           <>
             <Button
               maw="80%"
