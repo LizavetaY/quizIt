@@ -1,6 +1,8 @@
 import React from "react";
 import { Flex, Progress, Text, useMantineTheme } from "@mantine/core";
 
+const LIMIT = 30;
+
 export const ProgressBar = () => {
   const { colors } = useMantineTheme();
 
@@ -10,14 +12,15 @@ export const ProgressBar = () => {
     setTimerValue(timerValue + 1);
   }, 1000);
 
-  if (timerValue >= 30) {
+  if (timerValue >= LIMIT) {
     clearTimeout(timerId);
   }
 
-  const getProgressBarValue = () => Math.ceil(((30 - timerValue) * 100) / 30);
+  const getProgressBarValue = () =>
+    Math.ceil(((LIMIT - timerValue) * 100) / LIMIT);
 
   const getTime = () => {
-    const timeValue = 30 - timerValue;
+    const timeValue = LIMIT - timerValue;
 
     if (timeValue < 10) {
       return `0${timeValue}`;
