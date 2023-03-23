@@ -14,7 +14,7 @@ export const ProgressBar = () => {
     clearTimeout(timerId);
   }
 
-  const getProgressBarValue = () => Math.ceil((timerValue * 100) / 30);
+  const getProgressBarValue = () => Math.ceil(((30 - timerValue) * 100) / 30);
 
   const getTime = () => {
     const timeValue = 30 - timerValue;
