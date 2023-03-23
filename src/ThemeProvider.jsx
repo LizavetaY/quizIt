@@ -114,7 +114,6 @@ export const ThemeProvider = ({ children }) => {
             Navbar: {
               defaultProps: (theme) => ({
                 bg: theme.colorScheme === "dark" ? middleViolet : lightViolet,
-                borderColor: bg0,
               }),
             },
             Burger: {
