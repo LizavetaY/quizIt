@@ -133,8 +133,8 @@ export const ThemeProvider = ({ children }) => {
                   root: {
                     color:
                       theme.colorScheme === "dark" ? middleViolet : darkYellow,
-                    fz: "xl",
-                    fw: "700",
+                    fontSize: "1.2rem",
+                    fontWeight: "700",
                     ...theme.fn.hover({
                       animation: `${bounce} 1s ease infinite`,
                     }),
