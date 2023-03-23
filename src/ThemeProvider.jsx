@@ -152,7 +152,7 @@ export const ThemeProvider = ({ children }) => {
                     fontWeight: "600",
                     ...theme.fn.hover({
                       opacity: "0.6",
-                      transition: "all 0.2s easy",
+                      transition: "all 0.2s ease",
                       textDecoration: "none",
                     }),
                   },
