@@ -2,9 +2,11 @@
 
 ## Table of contents
 
-- [General info](#general-info)
-- [Technologies](#technologies)
-- [Setup](#setup)
+- [QuizIt](#quizit)
+  - [Table of contents](#table-of-contents)
+  - [General info](#general-info)
+  - [Technologies](#technologies)
+  - [Setup](#setup)
 
 ## General info
 
@@ -45,6 +47,12 @@ Start client (a development version):
 
 ```
 $ npm run dev
+```
+
+Start server (a development version):
+
+```
+$ npm run server
 ```
 
 Build production version:
