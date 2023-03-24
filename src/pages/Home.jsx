@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
 import { SimpleGrid } from "@mantine/core";
 
+import { useFetchTemp } from "@/api/useFetchTemp";
 import { QuizCard } from "@/components";
 
 export const Home = () => {
-  const [data, setData] = useState([]);
-  async function getData() {
-    const response = await fetch("http://localhost:8080/data");
-    const data = await response.json();
-    setData(data);
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const data = useFetchTemp();
 
   return (
     <SimpleGrid
