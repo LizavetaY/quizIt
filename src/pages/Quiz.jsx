@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Text } from "@mantine/core";
 
 import { QuizQuestion } from "@/components";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 
 import { reactRules } from "../../server/fakeData";
+
 export const Quiz = () => {
-  const [questionPage, setQuestionPage] = useState(0);
+  const [questionPage, setQuestionPage] = useLocalStorage("questionPage", 0);
   const [correctAnswersQty, setCorrectAnswersQty] = useLocalStorage(
     "correctAnswersQty",
     0
@@ -19,12 +20,14 @@ export const Quiz = () => {
   const setNextQuestionPage = () => {
     setQuestionPage(questionPage + 1);
   };
+
   const QUESTIONCOUNT = reactRules.length;
 
-  const isFinished = questionPage >= QUESTIONCOUNT;
+  const isContinue = questionPage < QUESTIONCOUNT;
 
-  if (isFinished) {
+  if (!isContinue) {
     localStorage.setItem("correctAnswersQty", JSON.stringify(0));
+    localStorage.setItem("questionPage", JSON.stringify(0));
   }
 
   return (
@@ -37,7 +40,7 @@ export const Quiz = () => {
         overflowY: "scroll",
       }}
     >
-      {(!isFinished && (
+      {(isContinue && (
         <QuizQuestion
           id={reactRules[questionPage].id}
           question={reactRules[questionPage].question}
