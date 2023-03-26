@@ -7,7 +7,7 @@ export const QuizCard = ({ name, path }) => {
   const { hovered, ref } = useHover();
 
   return (
-    <Card component="a" href={`/${path}`} bg={colors.bg1} ref={ref}>
+    <Card component="a" href={`/${path}`} bg={colors.bgSecondary} ref={ref}>
       <Center h={120} mx="auto">
         <Stack align="center">
           {hovered ? <Text size={18}>Play Quiz</Text> : undefined}

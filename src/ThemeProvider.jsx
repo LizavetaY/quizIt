@@ -30,9 +30,7 @@ export const ThemeProvider = ({ children }) => {
     lightYellow = "#f6d964",
     darkText = "#4F4284",
     lightGrey = "#817c8f",
-    violet2 = "#D0BFFF",
-    violet7 = "#7048E8",
-    orange4 = "#FFA94D",
+    orange5 = "#FF922B",
     orange7 = "#F76707",
     green6 = "#40C057",
     green9 = "#2B8A3E",
@@ -43,20 +41,19 @@ export const ThemeProvider = ({ children }) => {
     darkBlue = "#00589b",
     lightBlue = "#2bcbff";
 
-  const bg0 = isDark ? darkViolet : white; //dark bg
-  const bg1 = isDark ? middleViolet : lightViolet; //middle bg
-  const btnBg0 = isDark ? violet7 : violet2; //button main bg
-  const btnBg1 = isDark ? orange7 : orange4; //button additional bg
-  const btnBg2 = isDark ? green9 : green6; //button success bg
-  const btnBg3 = isDark ? red9 : red6; //button danger bg
-  const btnBorder0 = isDark ? yellow8 : yellow6; //button chosen answer border
-  const btnBgHover0 = isDark ? yellow8 : yellow6; //button hover
+  const bgPrimary = isDark ? darkViolet : white;
+  const bgSecondary = isDark ? middleViolet : lightViolet;
+  const btnBgPrimary = isDark ? middleViolet : lightViolet;
+  const btnBgSecondary = isDark ? orange7 : orange5;
+  const btnBgSuccess = isDark ? green9 : green6;
+  const btnBgDanger = isDark ? red9 : red6;
+  const btnBorderChosenAnswer = isDark ? yellow8 : yellow6;
+  const btnBgHover = isDark ? yellow8 : yellow6;
   const bgHeader = isDark ? darkYellow : middleViolet;
+  const textPrimary = isDark ? white : darkText;
+  const textSecondary = isDark ? lightYellow : lightGrey;
   const textLogo = isDark ? middleViolet : darkYellow;
-  const text0 = isDark ? white : darkText; // dark text
-  const text1 = isDark ? white : middleViolet; //middle text
-  const text2 = isDark ? lightYellow : lightGrey; //secondary text
-  const text3 = isDark ? middleViolet : middleViolet; // bth hover text
+  const textLink = isDark ? white : middleViolet;
 
   return (
     <ColorSchemeProvider
@@ -67,73 +64,71 @@ export const ThemeProvider = ({ children }) => {
         theme={{
           colorScheme,
           colors: {
-            bg0,
-            bg1,
-            btnBg0,
-            btnBg1,
-            btnBg2,
-            btnBg3,
-            btnBorder0,
-            btnBgHover0,
+            bgPrimary,
+            bgSecondary,
+            btnBgPrimary,
+            btnBgSecondary,
+            btnBgSuccess,
+            btnBgDanger,
+            btnBorderChosenAnswer,
+            btnBgHover,
             bgHeader,
+            textPrimary,
+            textSecondary,
             textLogo,
-            text0,
-            text1,
-            text2,
-            text3,
+            textLink,
           },
           components: {
             Menu: {
               styles: {
                 dropdown: {
-                  backgroundColor: bg1,
+                  backgroundColor: bgSecondary,
                 },
                 label: {
-                  color: text2,
+                  color: textSecondary,
                 },
                 item: {
-                  color: text0,
+                  color: textPrimary,
                 },
               },
             },
 
             Header: {
-              defaultProps: (theme) => ({
-                bg: theme.colorScheme === "dark" ? darkYellow : middleViolet,
+              defaultProps: () => ({
+                bg: bgHeader,
               }),
             },
             Footer: {
-              defaultProps: (theme) => ({
-                bg: theme.colorScheme === "dark" ? middleViolet : lightViolet,
+              defaultProps: () => ({
+                bg: bgSecondary,
                 height: "60px",
                 p: "md",
               }),
-              root: (theme) => ({
-                borderColor:
-                  theme.colorScheme === "dark" ? darkYellow : middleViolet,
+              root: () => ({
+                borderColor: bgHeader,
               }),
             },
             Navbar: {
-              defaultProps: (theme) => ({
-                bg: theme.colorScheme === "dark" ? middleViolet : lightViolet,
+              defaultProps: () => ({
+                bg: bgSecondary,
               }),
             },
             Burger: {
-              defaultProps: (theme) => ({
-                color: theme.colorScheme === "dark" ? middleViolet : darkYellow,
+              defaultProps: () => ({
+                color: textLogo,
                 size: "sm",
                 fontWeight: "600",
               }),
             },
             Text: {
-              defaultProps: (theme) => ({
-                color: theme.colorScheme === "dark" ? white : middleViolet,
+              defaultProps: () => ({
+                color: textPrimary,
+                size: "sm",
               }),
               variants: {
                 link: (theme) => ({
                   root: {
-                    color:
-                      theme.colorScheme === "dark" ? middleViolet : darkYellow,
+                    color: textLogo,
                     fontSize: "1.2rem",
                     fontWeight: "700",
                     ...theme.fn.hover({
@@ -144,13 +139,13 @@ export const ThemeProvider = ({ children }) => {
               },
             },
             Anchor: {
-              defaultProps: (theme) => ({
-                color: theme.colorScheme === "dark" ? white : middleViolet,
+              defaultProps: () => ({
+                color: textLink,
               }),
               variants: {
                 link: (theme) => ({
                   root: {
-                    color: theme.colorScheme === "dark" ? white : middleViolet,
+                    color: textLink,
                     fontWeight: "600",
                     ...theme.fn.hover({
                       opacity: "0.6",
@@ -163,37 +158,34 @@ export const ThemeProvider = ({ children }) => {
             },
             ActionIcon: {
               variants: {
-                outline: (theme) => ({
+                outline: () => ({
                   root: {
-                    borderColor:
-                      theme.colorScheme === "dark" ? darkYellow : middleViolet,
+                    borderColor: bgHeader,
                   },
                 }),
               },
             },
             Button: {
               variants: {
-                darkLight: (theme) => ({
+                primary: (theme) => ({
                   root: {
-                    backgroundColor:
-                      theme.colorScheme === "dark" ? orange7 : lightBlue,
-                    color: white,
+                    backgroundColor: btnBgPrimary,
+                    color: textPrimary,
                     ...theme.fn.hover({
-                      backgroundColor:
-                        theme.colorScheme === "dark" ? orange4 : darkBlue,
+                      backgroundColor: btnBgHover,
                     }),
                   },
                 }),
-                primary: (theme) => ({
+                secondary: (theme) => ({
                   root: {
-                    backgroundColor: orange7,
-                    color: white,
-                    ...theme.fn.hover({ backgroundColor: orange4 }),
+                    backgroundColor: btnBgSecondary,
+                    color: textPrimary,
+                    ...theme.fn.hover({ backgroundColor: btnBgHover }),
                   },
                 }),
                 danger: (theme) => ({
                   root: {
-                    backgroundColor: red9,
+                    backgroundColor: btnBgDanger,
                     color: white,
                     ...theme.fn.hover({ backgroundColor: red6 }),
                   },
@@ -207,17 +199,22 @@ export const ThemeProvider = ({ children }) => {
                 }),
                 success: (theme) => ({
                   root: {
-                    backgroundColor: green9,
+                    backgroundColor: btnBgSuccess,
                     color: white,
                     ...theme.fn.hover({ backgroundColor: green6 }),
                   },
                 }),
               },
             },
+            Progress: {
+              defaultProps: () => ({
+                color: btnBgHover,
+              }),
+            },
           },
           defaultGradient: {
-            from: colorScheme === "dark" ? darkViolet : white,
-            to: colorScheme === "dark" ? middleViolet : lightViolet,
+            from: bgPrimary,
+            to: bgSecondary,
             deg: 180,
           },
         }}
