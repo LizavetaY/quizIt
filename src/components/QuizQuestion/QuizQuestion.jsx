@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Flex, Text, useMantineTheme } from "@mantine/core";
 import PropTypes from "prop-types";
 
