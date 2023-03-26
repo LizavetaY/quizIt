@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { ProgressBar } from "@/components";
 
-const LIMIT = 3;
+const LIMIT = 30;
 
 export const QuizQuestion = ({
   isGameWithTimer,
