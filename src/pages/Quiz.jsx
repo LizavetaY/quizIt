@@ -5,8 +5,6 @@ import { Container, Text } from "@mantine/core";
 import { useFetchTemp } from "@/api/useFetchTemp";
 import { QuizPreview, QuizQuestion } from "@/components";
 
-import { reactRules } from "../../server/fakeData";
-
 export const Quiz = () => {
   const [quizData, setQuizData] = useState({});
 
@@ -57,7 +55,7 @@ export const Quiz = () => {
               setTypeOfGame={setTypeOfGame}
             />
           )) ||
-            (questionPage < reactRules.length && (
+            (questionPage < quizData.quizData.length && (
               <QuizQuestion
                 isGameWithTimer={isGameWithTimer}
                 question={quizData.quizData[questionPage].question}
@@ -66,14 +64,14 @@ export const Quiz = () => {
                   quizData.quizData[questionPage].correctAnswerId
                 }
                 explanation={quizData.quizData[questionPage].explanation}
-                questionsQty={reactRules.length}
+                questionsQty={quizData.quizData.length}
                 questionIndex={questionPage + 1}
                 isCorrectAnswer={countCorrectAnswersQty}
                 setNextQuestionPage={setNextQuestionPage}
               />
             )) || (
               <Text>
-                YOUR RESULT IS: {correctAnswersQty} / {reactRules.length}
+                YOUR RESULT IS: {correctAnswersQty} / {quizData.quizData.length}
               </Text>
             )}
         </Container>
