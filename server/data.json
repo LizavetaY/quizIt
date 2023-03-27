@@ -3,6 +3,7 @@
     {
       "quizId": "react-rules",
       "quizName": "React Rules",
+      "quizDescription": "This quiz is about ReactJS",
       "quizData": [
         {
           "id": "1",
@@ -81,6 +82,7 @@
     {
       "quizId": "html",
       "quizName": "HTML",
+      "quizDescription": "This quiz is about HTML",
       "quizData": [
         {
           "id": "1",
@@ -147,6 +149,7 @@
     {
       "quizId": "css",
       "quizName": "CSS",
+      "quizDescription": "This quiz is about CSS",
       "quizData": [
         {
           "id": "1",
@@ -282,6 +285,7 @@
     {
       "quizId": "javascript",
       "quizName": "JavaScript",
+      "quizDescription": "This quiz is about JavaScript",
       "quizData": [
         {
           "id": "1",
