@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Text } from "@mantine/core";
+import { Container } from "@mantine/core";
 
 import { useFetchTemp } from "@/api/useFetchTemp";
-import { QuizPreview, QuizQuestion } from "@/components";
+import { QuizPreview, QuizQuestion, Results } from "@/components";
 
 export const Quiz = () => {
   const [quizData, setQuizData] = useState({});
@@ -70,9 +70,12 @@ export const Quiz = () => {
                 setNextQuestionPage={setNextQuestionPage}
               />
             )) || (
-              <Text>
-                YOUR RESULT IS: {correctAnswersQty} / {quizData.quizData.length}
-              </Text>
+              <>
+                <Results
+                  correctAnswersQty={correctAnswersQty}
+                  quiz={quizData}
+                />
+              </>
             )}
         </Container>
       )}
