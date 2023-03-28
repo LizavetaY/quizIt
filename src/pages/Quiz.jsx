@@ -4,13 +4,17 @@ import { Container } from "@mantine/core";
 
 import { useFetchTemp } from "@/api/useFetchTemp";
 import { QuizPreview, QuizQuestion, Results } from "@/components";
+import { useLocalStorage } from "@/utils/useLocalStorage";
 
 export const Quiz = () => {
   const [quizData, setQuizData] = useState({});
 
   const [isGameWithTimer, setIsGameWithTimer] = useState("");
   const [questionPage, setQuestionPage] = useState(0);
-  const [correctAnswersQty, setCorrectAnswersQty] = useState(0);
+  const [correctAnswersQty, setCorrectAnswersQty] = useLocalStorage(
+    "correctAnswersQty",
+    0
+  );
 
   const { id: quizId } = useParams();
 
