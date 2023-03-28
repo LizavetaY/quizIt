@@ -22,7 +22,7 @@ export const Quiz = () => {
     quizDataObj = data.find((quiz) => quiz.quizId == quizId);
 
     setQuizData(quizDataObj);
-  }, [data]);
+  }, [quizId, data]);
 
   const setTypeOfGame = (isTimerActive) => {
     setIsGameWithTimer(isTimerActive);
