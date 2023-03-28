@@ -21,9 +21,7 @@ export const Quiz = () => {
     setQuestionPage(questionPage + 1);
   };
 
-  const QUESTIONCOUNT = reactRules.length;
-
-  const isContinue = questionPage < QUESTIONCOUNT;
+  const isContinue = questionPage < reactRules.length;
 
   if (!isContinue) {
     localStorage.setItem("correctAnswersQty", JSON.stringify(0));
@@ -47,7 +45,7 @@ export const Quiz = () => {
           answers={reactRules[questionPage].answers}
           correctAnswerId={reactRules[questionPage].correctAnswerId}
           explanation={reactRules[questionPage].explanation}
-          questionsQty={QUESTIONCOUNT}
+          questionsQty={reactRules.length}
           questionIndex={questionPage + 1}
           isCorrectAnswer={countCorrectAnswersQty}
           setNextQuestionPage={setNextQuestionPage}
