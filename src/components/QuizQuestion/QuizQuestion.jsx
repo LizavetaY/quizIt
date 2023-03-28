@@ -37,6 +37,9 @@ export const QuizQuestion = ({
   const setNextQuestionPageOnClick = () => {
     setTimerValue(LIMIT);
     setChosenBtnId("");
+    if (questionIndex === questionsQty) {
+      localStorage.setItem("correctAnswersQty", JSON.stringify(0));
+    }
     setNextQuestionPage();
   };
 

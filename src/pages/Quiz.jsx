@@ -40,13 +40,6 @@ export const Quiz = () => {
     setQuestionPage(questionPage + 1);
   };
 
-  const isContinue = questionPage < reactRules.length;
-
-  if (!isContinue) {
-    localStorage.setItem("correctAnswersQty", JSON.stringify(0));
-    localStorage.setItem("questionPage", JSON.stringify(0));
-  }
-
   return (
     <>
       {!!quizData && !!Object.keys(quizData)?.length && (
