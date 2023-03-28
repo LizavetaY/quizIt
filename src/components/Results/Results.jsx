@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Button,
   Center,
@@ -10,17 +10,18 @@ import {
 
 export const Results = ({ correctAnswersQty, quiz }) => {
   const { colors } = useMantineTheme();
-  const { id: quizId } = useParams();
 
   const totalQuestions = quiz.quizData.length;
+  const percentage = Math.round((correctAnswersQty / totalQuestions) * 100);
 
   return (
     <Container h="inherit" size="xs" px={0}>
       <Center h="inherit">
         <Stack align="center">
           <Container
-            h={200}
-            w={200}
+            h={280}
+            w={280}
+            mb={32}
             sx={{
               borderRadius: "20px",
               backgroundColor: colors.bgSecondary,
@@ -28,24 +29,28 @@ export const Results = ({ correctAnswersQty, quiz }) => {
           >
             <Center h="inherit">
               <Stack>
-                <Text ta="center">
-                  YOUR RESULT: {correctAnswersQty} / {totalQuestions}
+                <Text ta="center" fz="xl" fw={500}>
+                  Your result:
                 </Text>
-                <Text ta="center">100%</Text>
+                <Text ta="center" fz="lg" fw={300}>
+                  {correctAnswersQty} / {totalQuestions}
+                </Text>
+                <Text ta="center" fz="lg" fw={500}>
+                  {percentage}%
+                </Text>
               </Stack>
             </Center>
           </Container>
           <Stack>
             <Button
-              variant="primary"
-              radius="md"
               component={Link}
-              to={`/${quizId}`}
+              to={"/"}
+              variant="primary"
+              radius="xl"
+              size="md"
+              w={220}
             >
-              Retry
-            </Button>
-            <Button component={Link} to={"/"} variant="secondary" radius="md">
-              To Home Page
+              Back to Quizzes
             </Button>
           </Stack>
         </Stack>
