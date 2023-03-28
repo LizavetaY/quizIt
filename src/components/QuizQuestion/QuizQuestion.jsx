@@ -1,10 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import { Button, Flex, Text, useMantineTheme } from "@mantine/core";
 import PropTypes from "prop-types";
 
 import { ProgressBar } from "@/components";
 
+const LIMIT = 30;
+
 export const QuizQuestion = ({
+  isGameWithTimer,
   question,
   answers,
   correctAnswerId,
@@ -14,10 +17,11 @@ export const QuizQuestion = ({
   isCorrectAnswer,
   setNextQuestionPage,
 }) => {
-  const { colors } = useMantineTheme();
+  const [timerValue, setTimerValue] = useState(LIMIT);
+  const [chosenBtnId, setChosenBtnId] = useState("");
+  const [isShownExplanation, setIsShownExplanation] = useState(false);
 
-  const [chosenBtnId, setChosenBtnId] = React.useState("");
-  const [isShownExplanation, setIsShownExplanation] = React.useState(false);
+  const { colors } = useMantineTheme();
 
   const setBtnId = (event) => {
     const chosenBtnId = event.currentTarget.id;
@@ -31,41 +35,32 @@ export const QuizQuestion = ({
   };
 
   const setNextQuestionPageOnClick = () => {
+    setTimerValue(LIMIT);
     setChosenBtnId("");
     setNextQuestionPage();
   };
 
-  const getAnswerBtnColor = (btnId) => {
-    if (chosenBtnId) {
-      let stylesObj = {};
+  const getBtnDisabledColor = (btnId) => {
+    const stylesObj = {};
 
+    if (chosenBtnId || (!chosenBtnId && timerValue <= 0)) {
       if (chosenBtnId == btnId) {
-        stylesObj = {
-          border: `3px solid ${colors.btnBorder0}`,
-        };
+        stylesObj.border = `3px solid ${colors.btnBorderChosenAnswer}`;
       }
 
-      if (btnId == correctAnswerId) {
-        return {
-          ...stylesObj,
-          color: "#fff",
-          backgroundColor: colors.btnBg2,
-        };
+      if (
+        btnId == correctAnswerId ||
+        (btnId == correctAnswerId && timerValue <= 0)
+      ) {
+        stylesObj.color = "#fff";
+        stylesObj.backgroundColor = colors.btnBgSuccess;
       } else if (chosenBtnId == btnId && btnId != correctAnswerId) {
-        return {
-          ...stylesObj,
-          color: "#fff",
-          backgroundColor: colors.btnBg3,
-        };
-      } else {
-        return stylesObj;
+        stylesObj.color = "#fff";
+        stylesObj.backgroundColor = colors.btnBgDanger;
       }
     }
 
-    return {
-      color: colors.text0,
-      backgroundColor: colors.bg1,
-    };
+    return stylesObj;
   };
 
   return (
@@ -77,10 +72,10 @@ export const QuizQuestion = ({
         mih="30%"
         sx={{
           borderRadius: "30px",
-          backgroundColor: colors.bg1,
+          backgroundColor: colors.bgSecondary,
         }}
       >
-        <Text size="lg" weight="700" color={colors.text0}>
+        <Text size="lg" weight="700" color={colors.textPrimary}>
           {question}
         </Text>
 
@@ -91,7 +86,7 @@ export const QuizQuestion = ({
           p="15px 25px"
           sx={{
             borderRadius: "0 30px 0 50%",
-            backgroundColor: colors.bg0,
+            backgroundColor: colors.bgPrimary,
           }}
         >
           <Text size="md" weight="700">
@@ -105,22 +100,21 @@ export const QuizQuestion = ({
           <Button
             key={button.id}
             id={button.id}
-            disabled={!!chosenBtnId}
-            size="sm"
+            disabled={!!chosenBtnId || timerValue <= 0}
             mt="20px"
             w="100%"
             maw="48%"
             h="80px"
             ta="center"
             lh="1.2"
+            variant="primary"
             sx={{
               borderRadius: "20px",
-              ...getAnswerBtnColor(button.id),
             }}
             styles={() => ({
               root: {
                 "&:disabled": {
-                  ...getAnswerBtnColor(button.id),
+                  ...getBtnDisabledColor(button.id),
                 },
               },
               label: {
@@ -135,49 +129,56 @@ export const QuizQuestion = ({
       </Flex>
 
       <Flex direction="column" align="center" mt="50px">
-        {(!chosenBtnId && <ProgressBar />) || (
-          <>
-            <Button
-              maw="80%"
-              h="80px"
-              ta="center"
-              lh="1.2"
-              fullWidth
-              sx={(theme) => ({
-                borderRadius: "20px",
-                backgroundColor: theme.colors.btnBg1,
-              })}
-              styles={() => ({
-                label: {
-                  whiteSpace: "break-spaces",
-                },
-              })}
-              onClick={toggleExplanation}
-            >
-              {(!isShownExplanation && "See the explanation") || explanation}
-            </Button>
+        {(!chosenBtnId && isGameWithTimer && timerValue && (
+          <ProgressBar
+            LIMIT={LIMIT}
+            timerValue={timerValue}
+            setTimerValue={setTimerValue}
+          />
+        )) ||
+          ((chosenBtnId || (!chosenBtnId && !timerValue)) && (
+            <>
+              <Button
+                maw="80%"
+                h="80px"
+                ta="center"
+                lh="1.2"
+                fullWidth
+                variant="secondary"
+                sx={{
+                  borderRadius: "20px",
+                }}
+                styles={() => ({
+                  label: {
+                    whiteSpace: "break-spaces",
+                  },
+                })}
+                onClick={toggleExplanation}
+              >
+                {(!isShownExplanation && "See the explanation") || explanation}
+              </Button>
 
-            <Button
-              mt="20px"
-              miw="50%"
-              sx={{
-                color: colors.text0,
-                borderRadius: "20px",
-                backgroundColor: colors.btnBg0,
-              }}
-              onClick={setNextQuestionPageOnClick}
-            >
-              {(questionsQty != questionIndex && "Next question") ||
-                "See results"}
-            </Button>
-          </>
-        )}
+              <Button
+                mt="20px"
+                miw="50%"
+                variant="primary"
+                sx={{
+                  borderRadius: "20px",
+                }}
+                onClick={setNextQuestionPageOnClick}
+              >
+                {(questionsQty != questionIndex && "Next question") ||
+                  "See results"}
+              </Button>
+            </>
+          ))}
       </Flex>
     </>
   );
 };
 
 QuizQuestion.propTypes = {
+  isGameWithTimer: PropTypes.bool.isRequired,
   question: PropTypes.string.isRequired,
   answers: PropTypes.arrayOf(
     PropTypes.shape({

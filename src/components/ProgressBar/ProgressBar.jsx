@@ -1,32 +1,23 @@
-import React from "react";
-import { Flex, Progress, Text, useMantineTheme } from "@mantine/core";
+import { Flex, Progress, Text } from "@mantine/core";
+import PropTypes from "prop-types";
 
-const LIMIT = 30;
-
-export const ProgressBar = () => {
-  const { colors } = useMantineTheme();
-
-  const [timerValue, setTimerValue] = React.useState(0);
-
+export const ProgressBar = ({ LIMIT, timerValue, setTimerValue }) => {
   let timerId = setTimeout(() => {
-    setTimerValue(timerValue + 1);
+    setTimerValue(timerValue - 1);
   }, 1000);
 
-  if (timerValue >= LIMIT) {
+  if (timerValue <= 0) {
     clearTimeout(timerId);
   }
 
-  const getProgressBarValue = () =>
-    Math.ceil(((LIMIT - timerValue) * 100) / LIMIT);
+  const getProgressBarValue = () => Math.ceil((timerValue * 100) / LIMIT);
 
   const getTime = () => {
-    const timeValue = LIMIT - timerValue;
-
-    if (timeValue < 10) {
-      return `0${timeValue}`;
+    if (timerValue < 10) {
+      return `0${timerValue}`;
     }
 
-    return timeValue;
+    return timerValue;
   };
 
   return (
@@ -37,7 +28,6 @@ export const ProgressBar = () => {
         mih="20px"
         size="xl"
         radius="xl"
-        color={colors.btnBgHover0}
         value={getProgressBarValue()}
       />
 
@@ -45,14 +35,18 @@ export const ProgressBar = () => {
         pos="absolute"
         top="50%"
         left="50%"
-        size="sm"
-        fw="bold"
         lh="1"
-        color={colors.text0}
+        fw="bold"
         sx={{ transform: "translate(-50%, -50%)" }}
       >
         00:{getTime()}
       </Text>
     </Flex>
   );
+};
+
+ProgressBar.propTypes = {
+  LIMIT: PropTypes.number.isRequired,
+  timerValue: PropTypes.number.isRequired,
+  setTimerValue: PropTypes.func.isRequired,
 };
