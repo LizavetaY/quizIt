@@ -31,11 +31,11 @@ export const Quiz = () => {
   };
 
   const countCorrectAnswersQty = (isCorrect) => {
-    isCorrect && setCorrectAnswersQty(correctAnswersQty + 1);
+    isCorrect && setCorrectAnswersQty((prevState) => prevState + 1);
   };
 
   const setNextQuestionPage = () => {
-    setQuestionPage(questionPage + 1);
+    setQuestionPage((prevState) => prevState + 1);
   };
 
   return (
@@ -69,6 +69,7 @@ export const Quiz = () => {
                 questionsQty={quizData.quizData.length}
                 questionIndex={questionPage + 1}
                 isCorrectAnswer={countCorrectAnswersQty}
+                setQuestionPage={setQuestionPage}
                 setNextQuestionPage={setNextQuestionPage}
               />
             )) || (

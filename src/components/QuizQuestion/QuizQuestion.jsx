@@ -15,6 +15,7 @@ export const QuizQuestion = ({
   questionsQty,
   questionIndex,
   isCorrectAnswer,
+  setQuestionPage,
   setNextQuestionPage,
 }) => {
   const [timerValue, setTimerValue] = useState(LIMIT);
@@ -29,7 +30,7 @@ export const QuizQuestion = ({
     setChosenBtnId(chosenBtnId);
     isCorrectAnswer(chosenBtnId == correctAnswerId);
 
-    localStorage.setItem("questionPage", questionIndex);
+    setQuestionPage(questionIndex - 1);
   };
 
   const toggleExplanation = () => {
@@ -39,9 +40,6 @@ export const QuizQuestion = ({
   const setNextQuestionPageOnClick = () => {
     setTimerValue(LIMIT);
     setChosenBtnId("");
-    if (questionIndex === questionsQty) {
-      localStorage.setItem("correctAnswersQty", JSON.stringify(0));
-    }
     setNextQuestionPage();
   };
 
