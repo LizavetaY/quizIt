@@ -28,8 +28,6 @@ export const QuizQuestion = ({
 
     setChosenBtnId(chosenBtnId);
     isCorrectAnswer(chosenBtnId == correctAnswerId);
-
-    localStorage.setItem("questionPage", questionPage);
   };
 
   const toggleExplanation = () => {
