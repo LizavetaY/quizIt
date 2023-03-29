@@ -24,6 +24,9 @@ export const Quiz = () => {
 
   useEffect(() => {
     setQuizData(data);
+    localStorage.removeItem("questionPage");
+    localStorage.removeItem("correctAnswersQty");
+    localStorage.removeItem("isGameWithTimer");
   }, [quizId, data]);
 
   const setTypeOfGame = (isTimerActive) => {
