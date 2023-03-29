@@ -28,6 +28,8 @@ export const QuizQuestion = ({
 
     setChosenBtnId(chosenBtnId);
     isCorrectAnswer(chosenBtnId == correctAnswerId);
+
+    localStorage.setItem("questionPage", questionIndex);
   };
 
   const toggleExplanation = () => {
@@ -37,9 +39,6 @@ export const QuizQuestion = ({
   const setNextQuestionPageOnClick = () => {
     setTimerValue(LIMIT);
     setChosenBtnId("");
-    if (questionIndex === questionsQty) {
-      localStorage.setItem("correctAnswersQty", JSON.stringify(0));
-    }
     setNextQuestionPage();
   };
 

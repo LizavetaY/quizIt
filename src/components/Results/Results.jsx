@@ -11,6 +11,11 @@ import {
 export const Results = ({ correctAnswersQty, quiz }) => {
   const { colors } = useMantineTheme();
 
+  const clearLocalStorage = () => {
+    localStorage.removeItem("questionPage");
+    localStorage.removeItem("correctAnswersQty");
+    localStorage.removeItem("isGameWithTimer");
+  };
   const totalQuestions = quiz.quizData.length;
   const percentage = Math.round((correctAnswersQty / totalQuestions) * 100);
 
@@ -49,6 +54,7 @@ export const Results = ({ correctAnswersQty, quiz }) => {
               radius="xl"
               size="md"
               w={220}
+              onClick={clearLocalStorage}
             >
               Back to Quizzes
             </Button>
