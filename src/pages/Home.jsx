@@ -2,9 +2,10 @@ import { SimpleGrid } from "@mantine/core";
 
 import { useFetchTemp } from "@/api/useFetchTemp";
 import { QuizCard } from "@/components";
+import { Spinner } from "@/components/Spinner";
 
 export const Home = () => {
-  const data = useFetchTemp();
+  const { data, loading } = useFetchTemp();
 
   return (
     <SimpleGrid
@@ -14,6 +15,7 @@ export const Home = () => {
         { maxWidth: "sm", cols: 1, spacing: "sm" },
       ]}
     >
+      {loading && <Spinner />}
       {data.map((quiz) => {
         return (
           <QuizCard key={quiz.quizId} name={quiz.quizName} path={quiz.quizId} />

@@ -4,6 +4,7 @@ import { Container } from "@mantine/core";
 
 import { useFetchById } from "@/api/useFetchByID";
 import { QuizPreview, QuizQuestion, Results } from "@/components";
+import { Spinner } from "@/components/Spinner";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 
 export const Quiz = () => {
@@ -43,6 +44,7 @@ export const Quiz = () => {
 
   return (
     <>
+      {!quizData && <Spinner />}
       {!!quizData && !!Object.keys(quizData)?.length && (
         <Container
           size="sm"
