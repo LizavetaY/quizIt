@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Text } from "@mantine/core";
+import { Container } from "@mantine/core";
 
 import { useFetchById } from "@/api/useFetchByID";
-import { QuizPreview, QuizQuestion } from "@/components";
+import { QuizPreview, QuizQuestion, Results } from "@/components";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 
 export const Quiz = () => {
@@ -24,7 +24,7 @@ export const Quiz = () => {
 
   useEffect(() => {
     setQuizData(data);
-  }, [data, quizId]);
+  }, [quizId, data]);
 
   const setTypeOfGame = (isTimerActive) => {
     setIsGameWithTimer(isTimerActive);
@@ -72,9 +72,12 @@ export const Quiz = () => {
                 setNextQuestionPage={setNextQuestionPage}
               />
             )) || (
-              <Text>
-                YOUR RESULT IS: {correctAnswersQty} / {quizData.quizData.length}
-              </Text>
+              <>
+                <Results
+                  correctAnswersQty={correctAnswersQty}
+                  quiz={quizData}
+                />
+              </>
             )}
         </Container>
       )}
