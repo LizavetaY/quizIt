@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Text } from "@mantine/core";
 
-import { useFetchTemp } from "@/api/useFetchTemp";
+import { useFetchById } from "@/api/useFetchByID";
 import { QuizPreview, QuizQuestion } from "@/components";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 
 export const Quiz = () => {
   const [quizData, setQuizData] = useState({});
-
-  const [isGameWithTimer, setIsGameWithTimer] = useState("");
-  const [questionPage, setQuestionPage] = useState(0);
+  const [isGameWithTimer, setIsGameWithTimer] = useLocalStorage(
+    "isGameWithTimer",
+    ""
+  );
+  const [questionPage, setQuestionPage] = useLocalStorage("questionPage", 0);
   const [correctAnswersQty, setCorrectAnswersQty] = useLocalStorage(
     "correctAnswersQty",
     0
@@ -18,15 +20,11 @@ export const Quiz = () => {
 
   const { id: quizId } = useParams();
 
-  const data = useFetchTemp();
+  const data = useFetchById(quizId);
 
   useEffect(() => {
-    let quizDataObj = {};
-
-    quizDataObj = data.find((quiz) => quiz.quizId == quizId);
-
-    setQuizData(quizDataObj);
-  }, [data]);
+    setQuizData(data);
+  }, [data, quizId]);
 
   const setTypeOfGame = (isTimerActive) => {
     setIsGameWithTimer(isTimerActive);
