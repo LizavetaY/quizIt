@@ -12,6 +12,7 @@ export const Results = ({ correctAnswersQty, quiz }) => {
   const { colors } = useMantineTheme();
 
   const clearLocalStorage = () => {
+    localStorage.removeItem("quizId");
     localStorage.removeItem("questionPage");
     localStorage.removeItem("correctAnswersQty");
     localStorage.removeItem("isGameWithTimer");

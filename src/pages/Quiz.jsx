@@ -8,6 +8,7 @@ import { useLocalStorage } from "@/utils/useLocalStorage";
 
 export const Quiz = () => {
   const [quizData, setQuizData] = useState({});
+  const [quizId, setQuizId] = useLocalStorage("quizId", "");
   const [isGameWithTimer, setIsGameWithTimer] = useLocalStorage(
     "isGameWithTimer",
     ""
@@ -18,16 +19,22 @@ export const Quiz = () => {
     0
   );
 
-  const { id: quizId } = useParams();
+  const { id } = useParams();
 
-  const data = useFetchById(quizId);
+  const data = useFetchById(id);
 
   useEffect(() => {
     setQuizData(data);
-    localStorage.removeItem("questionPage");
-    localStorage.removeItem("correctAnswersQty");
-    localStorage.removeItem("isGameWithTimer");
-  }, [quizId, data]);
+    setQuizId(id);
+  }, [id, data]);
+
+  useEffect(() => {
+    if (id !== quizId) {
+      setIsGameWithTimer("");
+      setQuestionPage(0);
+      setCorrectAnswersQty(0);
+    }
+  }, []);
 
   const setTypeOfGame = (isTimerActive) => {
     setIsGameWithTimer(isTimerActive);
@@ -70,7 +77,7 @@ export const Quiz = () => {
                 }
                 explanation={quizData.quizData[questionPage].explanation}
                 questionsQty={quizData.quizData.length}
-                questionIndex={questionPage + 1}
+                questionPage={questionPage}
                 isCorrectAnswer={countCorrectAnswersQty}
                 setQuestionPage={setQuestionPage}
                 setNextQuestionPage={setNextQuestionPage}
