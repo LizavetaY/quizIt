@@ -7,3 +7,4 @@ export { QuizCard } from "./QuizCard";
 export { QuizPreview } from "./QuizPreview";
 export { QuizQuestion } from "./QuizQuestion";
 export { Results } from "./Results";
+export { Spinner } from "./Spinner";
