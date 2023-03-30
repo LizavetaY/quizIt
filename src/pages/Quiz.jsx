@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "@mantine/core";
 
-import { useFetchById } from "@/api/useFetchByID";
+import { useFetchById } from "@/api/useFetchById";
 import { QuizPreview, QuizQuestion, Results, Spinner } from "@/components";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 
