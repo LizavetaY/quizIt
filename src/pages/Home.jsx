@@ -1,10 +1,10 @@
 import { SimpleGrid } from "@mantine/core";
 
-import { useFetchTemp } from "@/api/useFetchTemp";
+import { useFetch } from "@/api/useFetch";
 import { QuizCard, Spinner } from "@/components";
 
 export const Home = () => {
-  const { data, loading } = useFetchTemp();
+  const { data, loading } = useFetch();
 
   return (
     <>
