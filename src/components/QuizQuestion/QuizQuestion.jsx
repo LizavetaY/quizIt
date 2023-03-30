@@ -13,7 +13,7 @@ export const QuizQuestion = ({
   correctAnswerId,
   explanation,
   questionsQty,
-  questionIndex,
+  questionPage,
   isCorrectAnswer,
   setNextQuestionPage,
 }) => {
@@ -28,8 +28,6 @@ export const QuizQuestion = ({
 
     setChosenBtnId(chosenBtnId);
     isCorrectAnswer(chosenBtnId == correctAnswerId);
-
-    localStorage.setItem("questionPage", questionIndex);
   };
 
   const toggleExplanation = () => {
@@ -92,7 +90,7 @@ export const QuizQuestion = ({
           }}
         >
           <Text size="md" weight="700">
-            {questionIndex} / {questionsQty}
+            {questionPage + 1} / {questionsQty}
           </Text>
         </Flex>
       </Flex>
@@ -169,7 +167,7 @@ export const QuizQuestion = ({
                 }}
                 onClick={setNextQuestionPageOnClick}
               >
-                {(questionsQty != questionIndex && "Next question") ||
+                {(questionsQty != questionPage && "Next question") ||
                   "See results"}
               </Button>
             </>
@@ -191,7 +189,7 @@ QuizQuestion.propTypes = {
   correctAnswerId: PropTypes.string.isRequired,
   explanation: PropTypes.string.isRequired,
   questionsQty: PropTypes.number.isRequired,
-  questionIndex: PropTypes.number.isRequired,
+  questionPage: PropTypes.number.isRequired,
   isCorrectAnswer: PropTypes.func.isRequired,
   setNextQuestionPage: PropTypes.func.isRequired,
 };
