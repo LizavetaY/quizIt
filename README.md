@@ -1,16 +1,6 @@
 # QuizIt
 
-## Table of contents
-
-- [QuizIt](#quizit)
-  - [Table of contents](#table-of-contents)
-  - [General info](#general-info)
-  - [Technologies](#technologies)
-  - [Setup](#setup)
-
-## General info
-
-This project is created for solving quizzes and checking your knowledge.
+This project is created for solving quizzes and checking your knowledge (and also for testing our developer skills 🙂).
 
 Here you can:
 
@@ -19,44 +9,22 @@ Here you can:
 - Analyze your mistakes
 - See your results
 
-## Technologies
+## Stack
 
-Project is created with:
+- **Bootstrapping**: [Vite](https://vitejs.dev/)
+- **Framework**: [React](https://react.dev/)
+- **UI Library**: [Mantine](https://mantine.dev/)
 
-Client:
+## Running Locally
 
-- react, react-dom (v.18.2.0)
-- mantine (v.6.0.2)
+This application requires Node.js to run.
 
-Build:
+- Clone [repo](https://github.com/LizavetaY/quizIt.git)
+- Move to project directory
+- Create a `.env` file similar to [`.env.example`](https://github.com/LizavetaY/quizIt/blob/master/.env.example)
+- In Terminal run
+  - `npm install`
+  - `npm run dev`
+  - `npm run server` (in new Terminal window)
 
-- vite (v.4.1.4)
-- eslint, prettier
-
-## Setup
-
-To run this project, install it locally using npm:
-
-Install dependencies:
-
-```
-$ npm install
-```
-
-Start client (a development version):
-
-```
-$ npm run dev
-```
-
-Start server (a development version):
-
-```
-$ npm run server
-```
-
-Build production version:
-
-```
-$ npm run build
-```
+###### Developed by [Liza](https://github.com/LizavetaY), [Kate](https://github.com/HarryPotter-4000) and [Mick](https://github.com/lazzzaroni)
