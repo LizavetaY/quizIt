@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Flex, Text, useMantineTheme } from "@mantine/core";
+import { Button, Container, Flex, Text, useMantineTheme } from "@mantine/core";
 import PropTypes from "prop-types";
 
 import { ProgressBar } from "@/components";
@@ -71,21 +71,23 @@ export const QuizQuestion = ({
         pos="relative"
         mih="30%"
         sx={{
-          borderRadius: "30px",
+          borderRadius: "1rem",
           backgroundColor: colors.bgSecondary,
         }}
       >
-        <Text size="lg" weight="700" color={colors.textPrimary}>
-          {question}
-        </Text>
+        <Container>
+          <Text size="md" weight="700" color={colors.textPrimary} ta="center">
+            {question}
+          </Text>
+        </Container>
 
         <Flex
           pos="absolute"
           top="0"
           right="0"
-          p="15px 25px"
+          p="0.8rem 1.2rem"
           sx={{
-            borderRadius: "0 30px 0 50%",
+            borderRadius: "0 1rem 0 2rem",
             backgroundColor: colors.bgPrimary,
           }}
         >
@@ -109,7 +111,7 @@ export const QuizQuestion = ({
             lh="1.2"
             variant="primary"
             sx={{
-              borderRadius: "20px",
+              borderRadius: "1rem",
             }}
             styles={() => ({
               root: {
@@ -142,10 +144,11 @@ export const QuizQuestion = ({
                 mb="20px"
                 miw="50%"
                 variant="secondary"
-                sx={{
-                  borderRadius: "20px",
-                }}
                 onClick={setNextQuestionPageOnClick}
+                size="md"
+                sx={{
+                  borderRadius: "1rem",
+                }}
               >
                 {(questionsQty != questionPage && "Next question") ||
                   "See results"}
@@ -159,7 +162,7 @@ export const QuizQuestion = ({
                 fullWidth
                 variant="primary"
                 sx={{
-                  borderRadius: "20px",
+                  borderRadius: "1rem",
                 }}
                 styles={() => ({
                   label: {

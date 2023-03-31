@@ -156,15 +156,6 @@ export const ThemeProvider = ({ children }) => {
                 }),
               },
             },
-            ActionIcon: {
-              variants: {
-                outline: () => ({
-                  root: {
-                    borderColor: bgHeader,
-                  },
-                }),
-              },
-            },
             Button: {
               variants: {
                 primary: (theme) => ({

@@ -52,7 +52,7 @@ export const QuizPreview = ({ quizName, quizDescription, setTypeOfGame }) => {
         pos="relative"
         mih="30%"
         sx={{
-          borderRadius: "30px",
+          borderRadius: "1rem",
           backgroundColor: colors.bgSecondary,
         }}
       >
@@ -62,7 +62,7 @@ export const QuizPreview = ({ quizName, quizDescription, setTypeOfGame }) => {
 
         {!!quizDescription && (
           <Text mt="20px" size="sm">
-            Description: {quizDescription}
+            {quizDescription}
           </Text>
         )}
       </Flex>
@@ -79,10 +79,10 @@ export const QuizPreview = ({ quizName, quizDescription, setTypeOfGame }) => {
             ta="center"
             lh="1.2"
             variant="primary"
-            sx={{
-              borderRadius: "20px",
-            }}
             onClick={setTypeOfGameOnClick}
+            sx={{
+              borderRadius: "1rem",
+            }}
           >
             {buttonData.code}
           </Button>

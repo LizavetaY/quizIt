@@ -29,7 +29,7 @@ export const Results = ({ correctAnswersQty, quiz }) => {
             w={280}
             mb={32}
             sx={{
-              borderRadius: "20px",
+              borderRadius: "1rem",
               backgroundColor: colors.bgSecondary,
             }}
           >
@@ -52,10 +52,12 @@ export const Results = ({ correctAnswersQty, quiz }) => {
               component={Link}
               to={"/"}
               variant="primary"
-              radius="xl"
               size="md"
               w={220}
               onClick={clearLocalStorage}
+              sx={{
+                borderRadius: "1rem",
+              }}
             >
               Back to Quizzes
             </Button>
