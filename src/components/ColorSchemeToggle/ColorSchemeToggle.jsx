@@ -12,14 +12,14 @@ export const ColorSchemeToggle = () => {
 
   return (
     <ActionIcon
-      variant="outline"
+      variant="transparent"
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >
       {isDark ? (
-        <IconSun size="1.2rem" color={colors.bgHeader} />
+        <IconSun size={24} color={colors.textLogo} />
       ) : (
-        <IconMoonStars size="1.1rem" color={colors.bgHeader} />
+        <IconMoonStars size={24} color={colors.textLogo} />
       )}
     </ActionIcon>
   );

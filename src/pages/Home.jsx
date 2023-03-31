@@ -11,8 +11,11 @@ export const Home = () => {
       {loading && <Spinner />}
       <SimpleGrid
         cols={3}
+        m={20}
+        spacing="xl"
+        verticalSpacing="xl"
         breakpoints={[
-          { maxWidth: "md", cols: 2, spacing: "md" },
+          { maxWidth: "md", cols: 2, spacing: "xl" },
           { maxWidth: "sm", cols: 1, spacing: "sm" },
         ]}
       >
