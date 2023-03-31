@@ -21,7 +21,7 @@ export const Quiz = () => {
 
   const { id } = useParams();
 
-  const data = useFetchById(id);
+  const { quizDataById: data, loading } = useFetchById(id);
 
   useEffect(() => {
     setQuizData(data);
@@ -50,7 +50,7 @@ export const Quiz = () => {
 
   return (
     <>
-      {!quizData && <Spinner />}
+      {loading && <Spinner />}
       {!!quizData && !!Object.keys(quizData)?.length && (
         <Container
           size="sm"
