@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
+import { useFetch } from "./useFetch";
 
 export const useFetchById = (id) => {
-  const [data, setData] = useState();
-  async function getData() {
-    const response = await fetch("http://localhost:8080/data");
-    const data = await response.json();
+  const { data } = useFetch();
 
-    let quizDataObj = {};
-    quizDataObj = data.find((quiz) => quiz.quizId == id);
-    setData(quizDataObj);
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  return data;
+  return data.find((quiz) => quiz.quizId == id);
 };

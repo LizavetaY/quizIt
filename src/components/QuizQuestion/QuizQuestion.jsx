@@ -139,12 +139,25 @@ export const QuizQuestion = ({
           ((chosenBtnId || (!chosenBtnId && !timerValue)) && (
             <>
               <Button
+                mb="20px"
+                miw="50%"
+                variant="secondary"
+                sx={{
+                  borderRadius: "20px",
+                }}
+                onClick={setNextQuestionPageOnClick}
+              >
+                {(questionsQty != questionPage && "Next question") ||
+                  "See results"}
+              </Button>
+
+              <Button
                 maw="80%"
                 h="80px"
                 ta="center"
                 lh="1.2"
                 fullWidth
-                variant="secondary"
+                variant="primary"
                 sx={{
                   borderRadius: "20px",
                 }}
@@ -156,19 +169,6 @@ export const QuizQuestion = ({
                 onClick={toggleExplanation}
               >
                 {(!isShownExplanation && "See the explanation") || explanation}
-              </Button>
-
-              <Button
-                mt="20px"
-                miw="50%"
-                variant="primary"
-                sx={{
-                  borderRadius: "20px",
-                }}
-                onClick={setNextQuestionPageOnClick}
-              >
-                {(questionsQty != questionPage && "Next question") ||
-                  "See results"}
               </Button>
             </>
           ))}

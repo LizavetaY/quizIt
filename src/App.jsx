@@ -1,10 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ApplicationShell } from "@/components/ApplicationShell";
-import { Home } from "@/pages/Home";
-import { LoginPage } from "@/pages/LoginPage";
-import { Quiz } from "@/pages/Quiz";
-import { SettingsPage } from "@/pages/SettingsPage";
+import { Home, Quiz } from "@/pages";
 
 export default function App() {
   return (
@@ -13,8 +10,6 @@ export default function App() {
         <Route path="/" element={<ApplicationShell />}>
           <Route index element={<Home />} />
           <Route path="/:id" element={<Quiz />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

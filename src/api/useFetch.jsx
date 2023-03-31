@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-export const useFetchTemp = () => {
+export const useFetch = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   async function getData() {
     setLoading(true);
-    const response = await fetch("http://localhost:8080/data");
+    // if DB will be hosted, add link to it to VITE_API_URL in .env and change variable here
+    const response = await fetch(import.meta.env.VITE_LOCAL_API_URL);
     const data = await response.json();
     setData(data);
     setLoading(false);
