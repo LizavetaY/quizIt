@@ -79,8 +79,10 @@ export const QuizPreview = ({ quizName, quizDescription, setTypeOfGame }) => {
             ta="center"
             lh="1.2"
             variant="primary"
-            radius="xl"
             onClick={setTypeOfGameOnClick}
+            sx={{
+              borderRadius: "1rem",
+            }}
           >
             {buttonData.code}
           </Button>
