@@ -8,7 +8,15 @@ export const QuizCard = ({ name, path }) => {
   const { hovered, ref } = useHover();
 
   return (
-    <Card component={Link} to={`/${path}`} bg={colors.bgSecondary} ref={ref}>
+    <Card
+      component={Link}
+      to={`/${path}`}
+      bg={colors.bgSecondary}
+      ref={ref}
+      sx={{
+        borderRadius: "1rem",
+      }}
+    >
       <Center h={120} mx="auto">
         <Stack align="center">
           {hovered ? <Text size={18}>Play Quiz</Text> : undefined}
